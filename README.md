@@ -1,24 +1,60 @@
-# Softare_Defined_Networks_Project_2023_24
+# Software Defined Networks: Link Delay Measurement
 
-## Project Overview
-This project is the final test for the "Software Defined Networks" course in the "Engineering of Computing Systems" program at Politecnico di Milano (2023/24). The goal of this project is to calculate the link delays between switches in a network using a Ryu controller.
+## Overview
 
-## Features
-- Works on any topology with at least two interconnected switches, regardless of the number of clients and servers.
-- Dynamically adapts to new network configurations.
-- Designed for continuously evolving networks, where switches can be connected or disconnected without affecting delay measurements.
-- Computes link delays based on the current network topology and traffic conditions.
+This is the final project for the "Software Defined Networks" course at Politecnico di Milano (2023/24). The goal of this project is to use a Ryu SDN controller to calculate real-time link delays between switches in a network.
 
-## Technologies Used
-- **Ryu SDN Controller**: A component-based software-defined networking framework.
-- **Mininet**: A network emulator for creating and testing SDN environments.
-- **Python**: The programming language used to implement the controller logic.
+## Key Features
 
-## Disclaimer
-This project is for academic purposes only and is not intended for external testing or deployment.
+* **Works Anywhere:** Supports any network topology as long as it has at least two interconnected switches.
+
+
+* **Dynamic & Resilient:** Automatically adapts to network changes. You can plug or unplug switches on the fly without breaking the delay measurements.
+
+
+* **Traffic-Aware:** Calculates delays based on actual network traffic and congestion, not just theoretical limits.
+
+
+* **Data Visualization:** Automatically generates boxplots and probability density graphs of the network delays using Matplotlib.
+
+
+
+## How It Works
+
+The controller measures delay in a simple three-step process:
+
+1. It estimates the baseline delay between the controller and the switches using `EchoRequest` and `EchoReply` messages.
+
+
+2. It injects custom measurement packets into the network and records their departure time.
+
+
+3. When the packets return, it calculates the exact travel time by subtracting the baseline delay from the arrival time.
+
+
+
+## Technologies Built With
+
+* **Python:** Core controller logic.
+
+
+* **Ryu SDN Controller:** Framework for managing the network.
+
+
+* **Mininet:** Used for network emulation.
+
+
+* **Matplotlib:** Used for generating delay statistics and plots.
+
+
+* *(Tested on physical hardware using Raspberry Pis and a Netgear switch)*.
+
+
 
 ## Authors
-This project was developed as part of the "Software Defined Networks" course at Politecnico di Milano.
+
+Pietro Ghersetich, Simone Francesco Curci, Marco Febbo, Amina El Kharouai
 
 ---
 
+**Disclaimer:** *This project is for academic purposes only and is not intended for external testing or deployment.*
